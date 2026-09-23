@@ -1,5 +1,6 @@
 -- Run this file once in Supabase Dashboard > SQL Editor.
 -- It creates an insert-only orders table for the public web application.
+-- A multi-food checkout inserts one row per selected food item.
 
 create table public.orders (
   id uuid primary key default gen_random_uuid(),

@@ -58,8 +58,8 @@
                 </span>
                 <h1 id="pageTitle">Food ordering <em>system.</em></h1>
                 <p>
-                  Pick a favorite, choose your quantity, and place your order in
-                  just a few clicks.
+                  Pick one or more favorites, set each quantity, and place your
+                  order in just a few clicks.
                 </p>
                 <div class="hero-features">
                   <span
@@ -95,7 +95,7 @@
             <div class="section-heading">
               <div>
                 <span class="section-kicker">Our menu</span>
-                <h2 id="menuHeading">Choose your favorite</h2>
+                <h2 id="menuHeading">Choose your favorites</h2>
               </div>
               <span class="menu-count">6 dishes</span>
             </div>
@@ -119,33 +119,7 @@
                 </span>
               </div>
 
-              <div id="emptySelection" class="selection-empty">
-                <span class="empty-icon" aria-hidden="true">
-                  <i class="bi bi-hand-index-thumb"></i>
-                </span>
-                <div>
-                  <strong>Nothing selected yet</strong>
-                  <p>Choose a dish from the menu to get started.</p>
-                </div>
-              </div>
-
-              <div id="selectedSummary" class="selected-summary d-none">
-                <img
-                  id="summaryImage"
-                  src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                  alt=""
-                >
-                <div class="selected-summary-copy">
-                  <span>Selected dish</span>
-                  <strong id="summaryName"></strong>
-                  <small id="summaryPrice"></small>
-                </div>
-                <span class="summary-check" aria-hidden="true">
-                  <i class="bi bi-check-lg"></i>
-                </span>
-              </div>
-
-              <form id="orderForm" novalidate>
+              <form id="orderForm" class="order-form" novalidate>
                 <div class="mb-3">
                   <label for="customerName" class="form-label"
                     >Customer Name</label
@@ -172,73 +146,57 @@
                     class="form-select"
                     id="foodSelect"
                     name="food"
-                    required
                   >
                     <option value="" selected disabled>
-                      Select a food item
+                      Add a food item
                     </option>
                   </select>
-                  <div class="invalid-feedback">Please choose a food item.</div>
+                  <div class="form-help">
+                    Use the cards or this list to add multiple dishes.
+                  </div>
+                  <div class="invalid-feedback">
+                    Please choose at least one food item.
+                  </div>
                 </div>
 
-                <div class="row g-3 mb-3">
-                  <div class="col-6">
-                    <label for="priceInput" class="form-label">Price</label>
-                    <div class="input-group">
-                      <span class="input-group-text">₱</span>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="priceInput"
-                        value="0.00"
-                        aria-label="Selected food price"
-                        readonly
-                      >
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <label for="quantityInput" class="form-label"
-                      >Quantity</label
+                <div
+                  class="cart-section"
+                  role="group"
+                  aria-labelledby="selectedFoodsHeading"
+                >
+                  <div class="cart-section-header">
+                    <span id="selectedFoodsHeading">Selected Foods</span>
+                    <button
+                      id="clearOrderButton"
+                      class="clear-order-button d-none"
+                      type="button"
                     >
-                    <div class="quantity-control">
-                      <button
-                        id="decreaseQuantity"
-                        class="quantity-button"
-                        type="button"
-                        aria-label="Decrease quantity"
-                      >
-                        <i class="bi bi-dash-lg"></i>
-                      </button>
-                      <input
-                        type="number"
-                        id="quantityInput"
-                        name="quantity"
-                        min="1"
-                        max="20"
-                        value="1"
-                        aria-label="Order quantity"
-                        required
-                      >
-                      <button
-                        id="increaseQuantity"
-                        class="quantity-button"
-                        type="button"
-                        aria-label="Increase quantity"
-                      >
-                        <i class="bi bi-plus-lg"></i>
-                      </button>
+                      Clear all
+                    </button>
+                  </div>
+
+                  <div id="emptySelection" class="selection-empty">
+                    <span class="empty-icon" aria-hidden="true">
+                      <i class="bi bi-hand-index-thumb"></i>
+                    </span>
+                    <div>
+                      <strong>Choose at least one dish</strong>
+                      <p>Your selected foods will appear here.</p>
                     </div>
                   </div>
+
+                  <div id="cartItems" class="cart-items d-none"></div>
+                  <p id="cartStatus" class="visually-hidden" aria-live="polite">
+                    Your order is empty.
+                  </p>
                 </div>
 
                 <div class="total-row">
                   <div>
                     <span>Total</span>
-                    <small>Price includes all items</small>
+                    <small id="orderSummaryText">0 dishes · 0 items</small>
                   </div>
-                  <output id="totalPrice" for="foodSelect quantityInput"
-                    >₱0.00</output
-                  >
+                  <output id="totalPrice">₱0.00</output>
                 </div>
 
                 <div

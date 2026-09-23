@@ -1,8 +1,8 @@
 # Food Ordering System
 
 A responsive food ordering website built with HTML, JavaScript, Bootstrap, and
-Supabase. Customers can select a meal, set a quantity, see the total instantly,
-and submit their order to Supabase.
+Supabase. Customers can select one or more meals, set each quantity, see the
+total instantly, and submit the complete order to Supabase.
 
 ## Live Website
 
@@ -11,8 +11,8 @@ and submit their order to Supabase.
 ## Features
 
 - Six food items with names, descriptions, images, and Philippine peso prices
-- Clickable food cards synchronized with the order form
-- Quantity controls and automatic total calculation
+- Multi-food cart using clickable cards or the food dropdown
+- Per-item quantity controls, line totals, and automatic order total calculation
 - Customer and order validation
 - Supabase order storage with loading, success, and error feedback
 - Insert-only Row Level Security that prevents public access to customer orders
@@ -54,7 +54,8 @@ Supabase SDK are loaded from CDNs.
 
 ## Order Data
 
-Each successful order stores:
+Each selected food is stored as one row during an atomic multi-row checkout.
+Every order row stores:
 
 - Customer name
 - Food name
