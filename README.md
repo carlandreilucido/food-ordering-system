@@ -4,6 +4,10 @@ A responsive food ordering website built with HTML, JavaScript, Bootstrap, and
 Supabase. Customers can select a meal, set a quantity, see the total instantly,
 and submit their order to Supabase.
 
+## Live Website
+
+<https://carlandreilucido.github.io/food-ordering-system/>
+
 ## Features
 
 - Six food items with names, descriptions, images, and Philippine peso prices
